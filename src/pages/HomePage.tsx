@@ -4,4 +4,5 @@ export default function HomePage() {
       <h1>HOMEPAGE</h1>
     </>
   )
+  
 }
