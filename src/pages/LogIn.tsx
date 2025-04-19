@@ -8,13 +8,21 @@ export default function LogIn() {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    console.log("CLICKED");
+    const savedUser = localStorage.getItem("registeredUser");
+    const parsedUser = savedUser ? JSON.parse(savedUser) : null;
+
+    const isRegistered =
+    parsedUser &&
+    username === parsedUser.username &&
+    password === parsedUser.password;
+
+    const isAdmin =
+    username === "admin" && password === "qwe123";
     
-    if (username === "admin" && password === "qwe123") {
-      localStorage.setItem("isLoggedIn", "true");
+    if (isAdmin || isRegistered) {
       navigate("/");
     } else {
-      alert("Неверный логин или пароль");
+      alert("Invalid login or password");
     }
   };
 
